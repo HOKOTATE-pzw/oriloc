@@ -1,3 +1,10 @@
+'''
+本库用于在一定条件下进行定位
+在使用中，距离的单位保持为km
+
+This package is used for location under certain conditions
+The unit of distance is maintained as "km"
+'''
 import numpy as np
 
 
@@ -18,6 +25,15 @@ def distance(c1, c2, rad=False):
     c1：一维数组，第一点的经纬度
     c2：一维数组，第二点的经纬度
     rad：布尔类型，可选，True表示输入经纬度为弧度制，默认为False
+    
+    
+    Find the distance between two known points
+    
+    Parameters
+    ----------
+    c1: 1D array, the longitude and the latitude of the first point
+    c2: 1D array, the longitude and the latitude of the second point
+    rad: bool, callable, True indicates that the input longitude and latitude are in radian system, default=False
     '''
     c1 = np.array(c1)
     c2 = np.array(c2)
@@ -47,6 +63,18 @@ def tria(c, d):
          [lon3, lat3],
          ...]
     d：一维数组，n点距离目标点的距离[d1, d2, d3, ...]
+    
+    
+    Triangulation method
+    
+    Parameters
+    ----------
+    c: 2D array, known longitude and latitude of n points, n>=3
+        [[lon1, lat1],
+         [lon2, lat2],
+         [lon3, lat3],
+         ...]
+    d: 1D array, the distances between n points and the destination[d1, d2, d3, ...]
     '''
     c = np.array(c)
     d = np.array(d)
@@ -97,14 +125,25 @@ def tria(c, d):
 
 def cir(c, d):
     '''
-    两点做圆求交点，三角定位法的补充
+    地球上的两点做圆求交点，三角定位法的补充
     
     参数
     ----
     c：二维数组，已知两点的经纬度
         [[lon1, lat1],
          [lon2, lat2]]
-    d：一维数组，n点距离目标点的距离[d1, d2]
+    d：一维数组，已知两点点距离目标点的距离[d1, d2]
+    
+    
+    Two points on the earth are rounded to find the intersection point
+    which is a supplement to the triangulation method
+    
+    Parameters
+    ----------
+    c: 2D array, known longitude and latitude of two points
+        [[lon1, lat1],
+         [lon2, lat2]]
+    d: 1D array, the distances between the known two points and the destination[d1, d2]
     '''
     c = np.array(c)
     d = np.array(d)
@@ -183,6 +222,17 @@ def angle(c, theta, base=None):
          [lon2, lat2]]
     theta：一维数组，已知两点到目标点的角度[theta1, theta2]
     base：字符串类型或列表类型，可选，基准方位，默认为东
+    
+    
+    Given two points and the angle from two points to the target point, find the target point
+    
+    Parameters
+    ----------
+    c：二维数组，已知两点的经纬度
+        [[lon1, lat1],
+         [lon2, lat2]]
+    theta: 1D array, the angles between the known two points and the destination[theta1, theta2]
+    base: str or list, callable, base orientation, default to East
     '''
     c = np.array(c) * np.pi / 180
     theta = np.array(theta) * np.pi / 180

@@ -6,12 +6,12 @@ from setuptools import find_packages, setup, Command
 
 
 NAME = 'oriloc'
-DESCRIPTION = 'A framework for calculating and modeling'
+DESCRIPTION = 'A package for location'
 URL = 'https://github.com/HOKOTATE-pzw/oriloc.git'
 EMAIL = 'pangzewei2010@foxmail.com'
 AUTHOR = 'HOKOTATE'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 REQUIRED = [
      'numpy',
 ]
